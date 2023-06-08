@@ -6,12 +6,28 @@ export function Header() {
     return (
         <HeaderContainer>
             <HeaderContent>
-                <h1><span>F</span>inance <span>C</span>ontrol</h1>
+                <a href="/"><h1><span>F</span>inance <span>C</span>ontrol</h1></a>
 
                 <nav>
-                    <a href="">OLÁAA</a>
-                    <a href="">23432423</a>
-                    <a href="">OOOO</a>
+                    <a href="/">Painel Geral</a>
+                    <a href="/transactions">Gerenciar Transações</a>
+                    <a href="">Gerenciar Contas</a>
+                </nav>
+            </HeaderContent>
+        </HeaderContainer>
+    )
+}
+
+export function HeaderTransactions() {
+    return (
+        <HeaderContainer>
+            <HeaderContent>
+                <a href="/"><h1><span>F</span>inance <span>C</span>ontrol</h1></a>
+
+                <nav>
+                    <a href="/">Painel Geral</a>
+                    <a href="/transactions">Gerenciar Transações</a>
+                    <a href="">Gerenciar Contas</a>
                 </nav>
 
                 <Dialog.Root>

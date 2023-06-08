@@ -15,6 +15,11 @@ export const HeaderContent = styled.div`
     justify-content: space-between;
     align-items: center;
 
+    a {
+        color: white;
+        text-decoration: none;
+    }
+
     span {
         color: ${props => props.theme["green-300"]};
     }
