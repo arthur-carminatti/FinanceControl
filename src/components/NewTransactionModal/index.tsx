@@ -8,10 +8,10 @@ import { useContextSelector } from 'use-context-selector';
 import { TransactionsContext } from '../../contexts/TransactionsContext';
 
 const newTransactionFormSchema = z.object({
-    description: z.string(),
+    description: z.string().min(2, 'Minimo 2 caractéres').max(30, 'Máximo de 30 caractéres'),
     price: z.number(),
-    category: z.string(),
-    type: z.enum(['income', 'outcome'])
+    category: z.string().min(2, 'Minimo 2 caractéres').max(15, 'Máximo de 15 caractéres'),
+    type: z.enum(['income', 'outcome']),
 })
 
 type NewTransactionFormIputs = z.infer<typeof newTransactionFormSchema>
@@ -25,7 +25,7 @@ export function NewTransactionModal() {
         control,
         register,
         handleSubmit,
-        formState: { isSubmitting },
+        formState: { isSubmitting, errors },
         reset
     } = useForm<NewTransactionFormIputs>({
         resolver: zodResolver(newTransactionFormSchema),
@@ -65,6 +65,7 @@ export function NewTransactionModal() {
                         required
                         {...register('description')}
                     />
+                    {errors.description && <span>{errors.description.message}</span>}
                     <input
                         type="number"
                         placeholder='Preço'
@@ -77,6 +78,7 @@ export function NewTransactionModal() {
                         required
                         {...register('category')}
                     />
+                    {errors.category && <span>{errors.category.message}</span>}
 
                     <Controller
                         control={control}

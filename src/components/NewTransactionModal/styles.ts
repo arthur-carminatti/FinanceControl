@@ -27,6 +27,12 @@ export const Content = styled(Dialog.Content)`
         flex-direction: column;
         gap: 1rem;
 
+        span {
+            color: ${props => props.theme['red-300']};
+            font-size: 14px;
+            margin-top: -10px;
+        }
+
         input {
             border-radius: 6px;
             border: 0;

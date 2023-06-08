@@ -7,6 +7,38 @@
       "type": "outcome",
       "createdAt": "2023-06-04T21:44:05.193Z",
       "id": 1
+    },
+    {
+      "description": "Teste",
+      "price": 1,
+      "category": "Alimentação",
+      "type": "income",
+      "createdAt": "2023-06-08T19:40:32.240Z",
+      "id": 2
+    },
+    {
+      "description": "aaaaa",
+      "price": 1,
+      "category": "111111",
+      "type": "income",
+      "createdAt": "2023-06-08T20:00:34.361Z",
+      "id": 3
+    },
+    {
+      "description": "11",
+      "price": 1,
+      "category": "11",
+      "type": "income",
+      "createdAt": "2023-06-08T20:15:19.675Z",
+      "id": 4
+    },
+    {
+      "description": "111111111111111111111111111111",
+      "price": 1,
+      "category": "11",
+      "type": "income",
+      "createdAt": "2023-06-08T20:15:34.658Z",
+      "id": 5
     }
   ]
 }
