@@ -2,7 +2,7 @@ import { FirstCollum, LastCollum, ManageAccountContainer, NewAccountButton } fro
 import manageAccount from '../../assets/ManageAccountImage.png'
 
 import * as Dialog from '@radix-ui/react-dialog';
-import { NewTransactionModal } from "../../components/NewTransactionModal";
+import { NewAccountModal } from "../../components/Modal/NewAccountModal";
 
 export function ManageAccounts() {
     return (
@@ -27,7 +27,7 @@ export function ManageAccounts() {
                         <NewAccountButton>Mesclar Contas</NewAccountButton>
                     </Dialog.Trigger>
 
-                    <NewTransactionModal />
+                    <NewAccountModal />
                 </Dialog.Root>
             </LastCollum>
         </ManageAccountContainer>

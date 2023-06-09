@@ -1,5 +1,5 @@
 import { HeaderContainer, HeaderContent, NewTransactionButton } from "./styles";
-import { NewTransactionModal } from "../NewTransactionModal";
+import { NewTransactionModal } from "../Modal/NewTransactionModal";
 import * as Dialog from '@radix-ui/react-dialog';
 
 export function Header() {

@@ -11,6 +11,12 @@ interface Transactions {
     createdAt: string
 }
 
+interface Account {
+    bank: string
+    agency: number
+    numberAccount: number
+}
+
 interface CreateTransactionInput {
     description: string
     price: number
@@ -18,10 +24,18 @@ interface CreateTransactionInput {
     type: 'income' | 'outcome'
 }
 
+interface CreateAccountInput {
+    bank: string
+    agency: number
+    numberAccount: number
+}
+
 interface TransactionContextType {
     transactions: Transactions[]
+    account: Account[]
     fetchTransactions: (query?: string) => Promise<void>
     createTransaction: (data: CreateTransactionInput) => Promise<void>
+    createAccount: (data: CreateAccountInput) => Promise<void>
     deleteTransaction: (id: number) => Promise<void>
 }
 
@@ -33,6 +47,7 @@ export const TransactionsContext = createContext({} as TransactionContextType)
 
 export function TransactionsProvider({ children }: TransactionsProviderProps) {
     const [transactions, setTransactions] = useState<Transactions[]>([])
+    const [account, setAccount] = useState<Account[]>([])
 
     const fetchTransactions = useCallback(
         async (query?: string) => {
@@ -62,6 +77,19 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
             setTransactions(state => [response.data, ...state])
         }, [])
 
+    const createAccount = useCallback(
+        async (data: CreateAccountInput) => {
+            const { bank, agency, numberAccount } = data
+
+            const response = await api.post('account', {
+                bank,
+                agency,
+                numberAccount
+            })
+
+            setAccount(state => [...state, response.data])
+        }, [])
+
     const deleteTransaction = useCallback(
         async (id: number) => {
             await api.delete(`transactions/${id}`)
@@ -75,8 +103,10 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     return (
         <TransactionsContext.Provider value={{
             transactions,
+            account,
             fetchTransactions,
             createTransaction,
+            createAccount,
             deleteTransaction
         }}>
             {children}

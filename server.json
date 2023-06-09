@@ -15,6 +15,28 @@
       "type": "income",
       "createdAt": "2023-06-08T20:29:43.243Z",
       "id": 2
+    },
+    {
+      "description": "123213",
+      "price": 213213,
+      "category": "3123123",
+      "type": "income",
+      "createdAt": "2023-06-09T20:57:14.687Z",
+      "id": 3
+    }
+  ],
+  "account": [
+    {
+      "id": 1,
+      "bank": "Nubank",
+      "agency": "0004",
+      "numberAccount": 1234
+    },
+    {
+      "bank": "santander",
+      "agency": 1,
+      "numberAccount": 120910291029,
+      "id": 2
     }
   ]
 }

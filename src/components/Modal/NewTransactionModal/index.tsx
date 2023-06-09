@@ -5,7 +5,7 @@ import * as z from 'zod'
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useContextSelector } from 'use-context-selector';
-import { TransactionsContext } from '../../contexts/TransactionsContext';
+import { TransactionsContext } from '../../../contexts/TransactionsContext';
 
 const newTransactionFormSchema = z.object({
     description: z.string().min(2, 'Minimo 2 caractéres').max(30, 'Máximo de 30 caractéres'),
