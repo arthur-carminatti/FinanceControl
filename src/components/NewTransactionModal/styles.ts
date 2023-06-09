@@ -72,6 +72,7 @@ export const Content = styled(Dialog.Content)`
 export const CloseButton = styled(Dialog.Close)`
     position: absolute;
     background: transparent;
+    border-radius: 4px;
     border: 0;
     top: 1.5rem;
     right: 1.5rem;

@@ -9,36 +9,12 @@
       "id": 1
     },
     {
-      "description": "Teste",
+      "description": "1111111111111111111111111111",
       "price": 1,
-      "category": "Alimentação",
+      "category": "11",
       "type": "income",
-      "createdAt": "2023-06-08T19:40:32.240Z",
+      "createdAt": "2023-06-08T20:29:43.243Z",
       "id": 2
-    },
-    {
-      "description": "aaaaa",
-      "price": 1,
-      "category": "111111",
-      "type": "income",
-      "createdAt": "2023-06-08T20:00:34.361Z",
-      "id": 3
-    },
-    {
-      "description": "11",
-      "price": 1,
-      "category": "11",
-      "type": "income",
-      "createdAt": "2023-06-08T20:15:19.675Z",
-      "id": 4
-    },
-    {
-      "description": "111111111111111111111111111111",
-      "price": 1,
-      "category": "11",
-      "type": "income",
-      "createdAt": "2023-06-08T20:15:34.658Z",
-      "id": 5
     }
   ]
 }

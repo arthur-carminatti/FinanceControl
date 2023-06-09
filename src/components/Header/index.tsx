@@ -11,7 +11,7 @@ export function Header() {
                 <nav>
                     <a href="/">Painel Geral</a>
                     <a href="/transactions">Gerenciar Transações</a>
-                    <a href="">Gerenciar Contas</a>
+                    <a href="/manageaccounts">Gerenciar Contas</a>
                 </nav>
             </HeaderContent>
         </HeaderContainer>
@@ -27,7 +27,7 @@ export function HeaderTransactions() {
                 <nav>
                     <a href="/">Painel Geral</a>
                     <a href="/transactions">Gerenciar Transações</a>
-                    <a href="">Gerenciar Contas</a>
+                    <a href="/manageaccounts">Gerenciar Contas</a>
                 </nav>
 
                 <Dialog.Root>
