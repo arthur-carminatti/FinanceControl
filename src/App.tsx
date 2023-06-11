@@ -4,15 +4,18 @@ import { GlobalStyle } from "./styles/global";
 import { TransactionsProvider } from "./contexts/TransactionsContext";
 import { BrowserRouter } from "react-router-dom";
 import { Router } from "./Router";
+import { AccountProvider } from "./contexts/AccountContext";
 
 export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle />
       <BrowserRouter>
-        <TransactionsProvider>
-          <Router />
-        </TransactionsProvider>
+        <AccountProvider>
+          <TransactionsProvider>
+            <Router />
+          </TransactionsProvider>
+        </AccountProvider>
       </BrowserRouter>
     </ThemeProvider>
   )

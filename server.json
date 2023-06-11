@@ -27,15 +27,15 @@
   ],
   "account": [
     {
-      "id": 1,
-      "bank": "Nubank",
-      "agency": "0004",
-      "numberAccount": 1234
+      "bank": "65756",
+      "agency": 567567,
+      "numberAccount": 657567,
+      "id": 1
     },
     {
-      "bank": "santander",
-      "agency": 1,
-      "numberAccount": 120910291029,
+      "bank": "99999",
+      "agency": 999999999,
+      "numberAccount": 9999999999,
       "id": 2
     }
   ]

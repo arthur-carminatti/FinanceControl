@@ -4,8 +4,8 @@ import { X } from 'phosphor-react';
 import * as z from 'zod'
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useContextSelector } from 'use-context-selector';
-import { TransactionsContext } from '../../../contexts/TransactionsContext';
+import { useContext } from 'react';
+import { AccountContext } from '../../../contexts/AccountContext';
 
 const newAccountFormSchema = z.object({
     bank: z.string().min(2, 'Deve conter no mínimo 2 caractéres!').max(15, 'Deve conter no máximo 15 caractéres!'),
@@ -16,9 +16,7 @@ const newAccountFormSchema = z.object({
 type NewAccountFormIputs = z.infer<typeof newAccountFormSchema>
 
 export function NewAccountModal() {
-    const createAccount = useContextSelector(TransactionsContext, (context) => {
-        return context.createAccount
-    })
+    const { createAccount } = useContext(AccountContext)
 
     const {
         register,

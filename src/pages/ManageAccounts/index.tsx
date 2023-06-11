@@ -1,8 +1,8 @@
 import { FirstCollum, LastCollum, ManageAccountContainer, NewAccountButton } from "./styles";
 import manageAccount from '../../assets/ManageAccountImage.png'
-
 import * as Dialog from '@radix-ui/react-dialog';
 import { NewAccountModal } from "../../components/Modal/NewAccountModal";
+import { RemoveAccountModal } from "../../components/Modal/RemoveAccountModal";
 
 export function ManageAccounts() {
     return (
@@ -13,11 +13,15 @@ export function ManageAccounts() {
             </FirstCollum>
 
             <LastCollum>
-
                 <Dialog.Root>
                     <Dialog.Trigger asChild>
                         <NewAccountButton>Cadastrar Conta</NewAccountButton>
                     </Dialog.Trigger>
+
+                    <NewAccountModal />
+                </Dialog.Root>
+
+                <Dialog.Root>
 
                     <Dialog.Trigger asChild>
                         <NewAccountButton>Remover Conta</NewAccountButton>
@@ -27,7 +31,7 @@ export function ManageAccounts() {
                         <NewAccountButton>Mesclar Contas</NewAccountButton>
                     </Dialog.Trigger>
 
-                    <NewAccountModal />
+                    <RemoveAccountModal />
                 </Dialog.Root>
             </LastCollum>
         </ManageAccountContainer>
