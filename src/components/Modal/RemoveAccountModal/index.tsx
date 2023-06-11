@@ -2,11 +2,12 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { CloseButton, Content, Overlay } from './styles';
 import { X } from 'phosphor-react';
 import { useForm } from "react-hook-form";
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AccountContext } from '../../../contexts/AccountContext';
 
 export function RemoveAccountModal() {
     const { deleteAccount, account } = useContext(AccountContext)
+    const [selectedAccountId, setSelectedAccountId] = useState<number | null>(null);
 
     const {
         register,
@@ -14,8 +15,12 @@ export function RemoveAccountModal() {
         formState: { isSubmitting }
     } = useForm()
 
-    async function handleDeleteAccount(id: number) {
-        deleteAccount(id)
+    const isButtonDisabled  = account.length === 0 || selectedAccountId === null
+
+    async function handleDeleteAccount() {
+        if (selectedAccountId !== null) {
+            await deleteAccount(selectedAccountId);
+        }
     }
 
     return (
@@ -39,6 +44,8 @@ export function RemoveAccountModal() {
                                         placeholder='Banco'
                                         required
                                         {...register('bank')}
+                                        value={acc.id}
+                                        onChange={(e) => setSelectedAccountId(Number(e.target.value))}
                                     />
                                     {acc.bank}
                                 </label>
@@ -46,7 +53,7 @@ export function RemoveAccountModal() {
                         })}
                     </div>
 
-                    <button type='submit' disabled={isSubmitting}>
+                    <button type='submit' disabled={isSubmitting || isButtonDisabled}>
                         Remover Conta
                     </button>
                 </form>

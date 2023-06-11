@@ -25,18 +25,5 @@
       "id": 3
     }
   ],
-  "account": [
-    {
-      "bank": "65756",
-      "agency": 567567,
-      "numberAccount": 657567,
-      "id": 1
-    },
-    {
-      "bank": "99999",
-      "agency": 999999999,
-      "numberAccount": 9999999999,
-      "id": 2
-    }
-  ]
+  "account": []
 }
