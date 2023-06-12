@@ -7,23 +7,32 @@
       "type": "outcome",
       "createdAt": "2023-06-04T21:44:05.193Z",
       "id": 1
+    }
+  ],
+  "account": [
+    {
+      "bank": "Santander",
+      "agency": 1234,
+      "numberAccount": 1234,
+      "id": 1
     },
     {
-      "description": "1111111111111111111111111111",
-      "price": 1,
-      "category": "11",
-      "type": "income",
-      "createdAt": "2023-06-08T20:29:43.243Z",
+      "bank": "Nubank",
+      "agency": 4321,
+      "numberAccount": 4321,
       "id": 2
     },
     {
-      "description": "123213",
-      "price": 213213,
-      "category": "3123123",
-      "type": "income",
-      "createdAt": "2023-06-09T20:57:14.687Z",
+      "bank": "Sicred",
+      "agency": 1234,
+      "numberAccount": 12334,
       "id": 3
+    },
+    {
+      "bank": "Teste",
+      "agency": 0,
+      "numberAccount": 0,
+      "id": 4
     }
-  ],
-  "account": []
+  ]
 }

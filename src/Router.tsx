@@ -4,6 +4,7 @@ import { DefaultLayout } from './layouts/DefaultLayout';
 import { Dashboard } from './pages/Dashboard';
 import { TransactionsLayout } from './layouts/TransactionsLayout';
 import { ManageAccounts } from './pages/ManageAccounts';
+import { ManageTransactions } from './pages/ManageTransactions';
 
 export function Router() {
     return (
@@ -11,6 +12,7 @@ export function Router() {
             <Route path="/" element={<DefaultLayout />}>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/manageaccounts" element={<ManageAccounts />} />
+                <Route path="/managetransactions" element={<ManageTransactions />} />
             </Route>
 
             <Route path="/transactions" element={<TransactionsLayout />}>

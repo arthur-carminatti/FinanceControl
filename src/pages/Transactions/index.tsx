@@ -29,7 +29,7 @@ export function Transactions() {
                 <TransactionsTable>
                     <tbody>
                         {transactions.map(transaction => {
-                            function removerTransaction() {
+                            function removeTransaction() {
                                 deleteTransaction(transaction.id)
                             }
                             return (
@@ -45,7 +45,7 @@ export function Transactions() {
                                     </td>
                                     <td>{dateFormatter.format(new Date(transaction.createdAt))}</td>
                                     <td>
-                                        <button onClick={removerTransaction}>
+                                        <button onClick={removeTransaction}>
                                             <Trash size={18} />
                                         </button>
                                     </td>

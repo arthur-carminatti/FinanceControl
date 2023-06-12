@@ -3,6 +3,7 @@ import manageAccount from '../../assets/ManageAccountImage.png'
 import * as Dialog from '@radix-ui/react-dialog';
 import { NewAccountModal } from "../../components/Modal/NewAccountModal";
 import { RemoveAccountModal } from "../../components/Modal/RemoveAccountModal";
+import { MergeAccountModal } from "../../components/Modal/MergeAccount";
 
 export function ManageAccounts() {
     return (
@@ -27,11 +28,16 @@ export function ManageAccounts() {
                         <NewAccountButton>Remover Conta</NewAccountButton>
                     </Dialog.Trigger>
 
+                    <RemoveAccountModal />
+                </Dialog.Root>
+
+                <Dialog.Root>
+
                     <Dialog.Trigger asChild>
                         <NewAccountButton>Mesclar Contas</NewAccountButton>
                     </Dialog.Trigger>
 
-                    <RemoveAccountModal />
+                    <MergeAccountModal />
                 </Dialog.Root>
             </LastCollum>
         </ManageAccountContainer>

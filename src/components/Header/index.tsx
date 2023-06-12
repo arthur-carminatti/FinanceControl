@@ -10,7 +10,8 @@ export function Header() {
 
                 <nav>
                     <a href="/">Painel Geral</a>
-                    <a href="/transactions">Gerenciar Transações</a>
+                    <a href="/transactions">Transações</a>
+                    <a href="/managetransactions">Gerenciar Transações</a>
                     <a href="/manageaccounts">Gerenciar Contas</a>
                 </nav>
             </HeaderContent>
@@ -26,7 +27,8 @@ export function HeaderTransactions() {
 
                 <nav>
                     <a href="/">Painel Geral</a>
-                    <a href="/transactions">Gerenciar Transações</a>
+                    <a href="/transactions">Transações</a>
+                    <a href="/managetransactions">Gerenciar Transações</a>
                     <a href="/manageaccounts">Gerenciar Contas</a>
                 </nav>
 
