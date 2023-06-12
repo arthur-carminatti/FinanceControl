@@ -11,28 +11,10 @@
   ],
   "account": [
     {
-      "bank": "Santander",
-      "agency": 1234,
-      "numberAccount": 1234,
-      "id": 1
-    },
-    {
-      "bank": "Nubank",
-      "agency": 4321,
-      "numberAccount": 4321,
+      "bank": "23123",
+      "agency": 2131231231231231200,
+      "numberAccount": 111111111111111,
       "id": 2
-    },
-    {
-      "bank": "Sicred",
-      "agency": 1234,
-      "numberAccount": 12334,
-      "id": 3
-    },
-    {
-      "bank": "Teste",
-      "agency": 0,
-      "numberAccount": 0,
-      "id": 4
     }
   ]
 }

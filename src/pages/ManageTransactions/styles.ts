@@ -22,10 +22,10 @@ export const TransactionsContainer = styled.main`
         font-weight: bold;
         padding: 0 1.25rem;
         border-radius: 8px;
+        cursor: pointer;
 
         input {
             background-color: transparent;
-            display: none;
         }
-    }
+    } 
 `

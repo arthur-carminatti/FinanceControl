@@ -1,27 +1,27 @@
 import { TransactionsContainer } from "./styles";
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { AccountContext } from '../../contexts/AccountContext';
 import { useForm } from "react-hook-form";
 
 export function ManageTransactions() {
-    const { account } = useContext(AccountContext)
-    const [selectedAccountId, setSelectedAccountId] = useState<number | null>(null);
+    const { account, deleteAccount } = useContext(AccountContext)
+    const { handleSubmit } = useForm()
 
-    const { register } = useForm()
+    async function handleDeleteAccount(selectedAccountId: any) {
+        await deleteAccount(selectedAccountId)
+    }
 
     return (
         <TransactionsContainer>
-            <form>
+            <form onSubmit={handleSubmit(handleDeleteAccount)}>
                 <div>
                     {account.map(acc => {
                         return (
-                            <button>
-                                <input
-                                    type="submit"
-                                    required
-                                    {...register('bank')}
-                                    onChange={(e) => setSelectedAccountId(Number(e.target.value))}
-                                />
+                            <button
+                                key={acc.id}
+                                type="submit"
+                                onClick={() => handleDeleteAccount(acc.id)}
+                            >
                                 {acc.bank}
                             </button>
                         )
