@@ -10,11 +10,6 @@ import { useContext } from 'react';
 import { AccountContext } from '../../contexts/AccountContext';
 
 export function Transactions() {
-    const transactions = useContextSelector(TransactionsContext, (context) => {
-        return (
-            context.transactions
-        )
-    })
 
     const deleteTransaction = useContextSelector(TransactionsContext, (context) => {
         return (

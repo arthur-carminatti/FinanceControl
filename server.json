@@ -6,23 +6,23 @@
       "agency": 11121,
       "numberAccount": 2323,
       "balance": 0,
-      "description": "teste",
-      "price": 3201,
-      "category": "saida",
-      "type": "outcome",
+      "description": "Teste",
+      "price": 111,
+      "category": "111",
+      "type": "income",
       "createdAt": "2023-06-13T00:03:54.219Z",
       "id": 2
     },
     {
-      "bank": "Sicred",
+      "bank": "santander",
       "agency": 1,
-      "numberAccount": 1,
+      "numberAccount": 1234,
       "balance": 0,
-      "description": "teste",
-      "price": 100,
-      "category": "test",
+      "description": "11",
+      "price": 11,
+      "category": "11",
       "type": "income",
-      "createdAt": "2023-06-13T20:48:18.561Z",
+      "createdAt": "2023-06-13T23:15:03.062Z",
       "id": 3
     }
   ]

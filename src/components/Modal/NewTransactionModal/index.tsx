@@ -6,7 +6,6 @@ import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext } from 'react';
 import { AccountContext } from '../../../contexts/AccountContext';
-import { ManageTransactions } from '../../../pages/ManageTransactions';
 
 const newTransactionFormSchema = z.object({
     description: z.string().min(2, 'Minimo 2 caractéres').max(30, 'Máximo de 30 caractéres'),
@@ -64,7 +63,7 @@ export function NewTransactionModal() {
                 <CloseButton>
                     <X size={24} />
                 </CloseButton>
-                
+
                 <form onSubmit={handleSubmit(handleCreateNewTransaction)}>
                     <input
                         type="text"
