@@ -5,6 +5,9 @@ import { PriceHighLight, TransactionsContainer, TransactionsTable } from "./styl
 import { TransactionsContext } from "../../contexts/TransactionsContext";
 import { dateFormatter, priceFormatter } from "../../utils/formatter";
 import { Trash } from 'phosphor-react';
+import { ManageTransactions } from '../ManageTransactions';
+import { useContext } from 'react';
+import { AccountContext } from '../../contexts/AccountContext';
 
 export function Transactions() {
     const transactions = useContextSelector(TransactionsContext, (context) => {
@@ -19,42 +22,49 @@ export function Transactions() {
         )
     })
 
+    const { accountSelected } = useContext(AccountContext)
+
     return (
         <div>
-            <Summary />
+            {
+                accountSelected.length != 0 ? <>
+                    <Summary />
 
-            <TransactionsContainer>
-                <SearchForm />
+                    <TransactionsContainer>
+                        <SearchForm />
 
-                <TransactionsTable>
-                    <tbody>
-                        {transactions.map(transaction => {
-                            function removeTransaction() {
-                                deleteTransaction(transaction.id)
-                            }
-                            return (
-                                <tr key={transaction.id}>
-                                    <td>{transaction.type === 'outcome' ? 'Despesa' : 'Receita'}</td>
-                                    <td>{transaction.category}</td>
-                                    <td width="30%">{transaction.description}</td>
-                                    <td>
-                                        <PriceHighLight variant={transaction.type}>
-                                            {transaction.type === 'outcome' && '- '}
-                                            {priceFormatter.format(transaction.price)}
-                                        </PriceHighLight>
-                                    </td>
-                                    <td>{dateFormatter.format(new Date(transaction.createdAt))}</td>
-                                    <td>
-                                        <button onClick={removeTransaction}>
-                                            <Trash size={18} />
-                                        </button>
-                                    </td>
-                                </tr>
-                            )
-                        })}
-                    </tbody>
-                </TransactionsTable>
-            </TransactionsContainer>
+                        <TransactionsTable>
+                            <tbody>
+                                {accountSelected.map(acc => {
+                                    function removeTransaction() {
+                                        deleteTransaction(acc.id)
+                                    }
+                                    return (
+                                        <tr key={acc.id}>
+                                            <td>{acc.type === 'outcome' ? 'Despesa' : 'Receita'}</td>
+                                            <td>{acc.category}</td>
+                                            <td width="30%">{acc.description}</td>
+                                            <td>
+                                                <PriceHighLight variant={acc.type}>
+                                                    {acc.type === 'outcome' && '- '}
+                                                    {priceFormatter.format(acc.price)}
+                                                </PriceHighLight>
+                                            </td>
+                                            <td>{dateFormatter.format(new Date(acc.createdAt))}</td>
+                                            <td>
+                                                <button onClick={removeTransaction}>
+                                                    <Trash size={18} />
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    )
+                                })}
+                            </tbody>
+                        </TransactionsTable>
+                    </TransactionsContainer>
+                </> :
+                    <ManageTransactions />
+            }
         </div>
     )
 }

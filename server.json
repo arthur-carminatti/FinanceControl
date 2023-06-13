@@ -1,20 +1,29 @@
 {
-  "transactions": [
-    {
-      "description": "Hamburguer",
-      "price": 80,
-      "category": "Alimentação",
-      "type": "outcome",
-      "createdAt": "2023-06-04T21:44:05.193Z",
-      "id": 1
-    }
-  ],
+  "transactions": [],
   "account": [
     {
-      "bank": "23123",
-      "agency": 2131231231231231200,
-      "numberAccount": 111111111111111,
+      "bank": "nuu",
+      "agency": 11121,
+      "numberAccount": 2323,
+      "balance": 0,
+      "description": "teste",
+      "price": 3201,
+      "category": "saida",
+      "type": "outcome",
+      "createdAt": "2023-06-13T00:03:54.219Z",
       "id": 2
+    },
+    {
+      "bank": "Sicred",
+      "agency": 1,
+      "numberAccount": 1,
+      "balance": 0,
+      "description": "teste",
+      "price": 100,
+      "category": "test",
+      "type": "income",
+      "createdAt": "2023-06-13T20:48:18.561Z",
+      "id": 3
     }
   ]
 }

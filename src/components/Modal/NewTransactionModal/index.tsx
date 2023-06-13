@@ -4,22 +4,23 @@ import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react';
 import * as z from 'zod'
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useContextSelector } from 'use-context-selector';
-import { TransactionsContext } from '../../../contexts/TransactionsContext';
+import { useContext } from 'react';
+import { AccountContext } from '../../../contexts/AccountContext';
+import { ManageTransactions } from '../../../pages/ManageTransactions';
 
 const newTransactionFormSchema = z.object({
     description: z.string().min(2, 'Minimo 2 caractéres').max(30, 'Máximo de 30 caractéres'),
     price: z.number(),
     category: z.string().min(2, 'Minimo 2 caractéres').max(15, 'Máximo de 15 caractéres'),
-    type: z.enum(['income', 'outcome']),
+    type: z.enum(['income', 'outcome'])
 })
 
 type NewTransactionFormIputs = z.infer<typeof newTransactionFormSchema>
 
 export function NewTransactionModal() {
-    const createTransaction = useContextSelector(TransactionsContext, (context) => {
-        return context.createTransaction
-    })
+    const { editAccount, accountSelected } = useContext(AccountContext)
+
+    const isButtonDisabled = accountSelected.length === 0
 
     const {
         control,
@@ -37,7 +38,7 @@ export function NewTransactionModal() {
     async function handleCreateNewTransaction(data: NewTransactionFormIputs) {
         const { description, price, category, type } = data
 
-        await createTransaction({
+        await editAccount({
             description,
             price,
             category,
@@ -52,12 +53,18 @@ export function NewTransactionModal() {
             <Overlay />
 
             <Content>
-                <Dialog.Title>Nova Transação</Dialog.Title>
+                <Dialog.Title>
+                    {
+                        accountSelected.length != 0
+                            ? `Nova Transação: ${accountSelected[0].bank}`
+                            : 'Nova Transação'
+                    }
+                </Dialog.Title>
 
                 <CloseButton>
                     <X size={24} />
                 </CloseButton>
-
+                
                 <form onSubmit={handleSubmit(handleCreateNewTransaction)}>
                     <input
                         type="text"
@@ -103,7 +110,7 @@ export function NewTransactionModal() {
                         }}
                     />
 
-                    <button type='submit' disabled={isSubmitting}>
+                    <button type='submit' disabled={isSubmitting || isButtonDisabled}>
                         Cadastrar
                     </button>
                 </form>

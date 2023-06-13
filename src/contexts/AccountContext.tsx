@@ -6,6 +6,11 @@ interface Account {
     bank: string
     agency: number
     numberAccount: number
+    description: string
+    type: 'income' | 'outcome'
+    price: number
+    category: string
+    createdAt: string
 }
 
 interface CreateAccountInput {
@@ -14,10 +19,20 @@ interface CreateAccountInput {
     numberAccount: number
 }
 
+interface CreateTransactionInput {
+    description: string
+    price: number
+    category: string
+    type: 'income' | 'outcome'
+}
+
 interface TransactionContextType {
     account: Account[]
+    accountSelected: Account[]
     createAccount: (data: CreateAccountInput) => Promise<void>
+    editAccount: (data: CreateTransactionInput) => Promise<void>
     deleteAccount: (id: number) => Promise<void>
+    compareAccount: (id: number) => void
 }
 
 interface AccountProviderProps {
@@ -28,23 +43,17 @@ export const AccountContext = createContext({} as TransactionContextType)
 
 export function AccountProvider({ children }: AccountProviderProps) {
     const [account, setAccount] = useState<Account[]>([])
+    const [accountSelected, setAccountSelected] = useState<Account[]>([])
 
-    async function fetchAccounts(query?: string) {
-        const response = await api.get('account', {
-            params: {
-                _sort: 'createdAt',
-                _order: 'desc',
-                q: query
-            }
-        })
+    async function fetchAccounts() {
+        const response = await api.get('account')
 
         setAccount(response.data)
-        console.log(response.data)
     }
 
     useEffect(() => {
         fetchAccounts()
-    }, [])
+    }, [accountSelected])
 
     async function createAccount(data: CreateAccountInput) {
         const { bank, agency, numberAccount } = data
@@ -56,13 +65,41 @@ export function AccountProvider({ children }: AccountProviderProps) {
         const response = await api.post('account', {
             bank,
             agency,
-            numberAccount
+            numberAccount,
+            balance: 0,
+            description: '',
+            price: 0,
+            category: '',
+            type: '',
+            createdAt: new Date()
         })
 
         setAccount(state => [...state, response.data])
-        console.log(account.map(item => {
-            return item.bank
-        }))
+    }
+
+    async function editAccount(data: CreateTransactionInput) {
+        const { description, price, category, type } = data
+
+        const idRoute = accountSelected[0].id
+
+        await api.patch(`account/${idRoute}`, {
+            description,
+            price,
+            category,
+            type,
+        });
+
+        setAccountSelected(state => {
+            const updatedAccount = {
+                ...state[0],
+                description,
+                price,
+                category,
+                type
+            };
+
+            return [...state, updatedAccount];
+        });
     }
 
     async function deleteAccount(id: number) {
@@ -70,11 +107,19 @@ export function AccountProvider({ children }: AccountProviderProps) {
         setAccount(account.filter(account => account.id !== id))
     }
 
+    function compareAccount(id: number) {
+        const compare = account.filter(account => account.id === id)
+        setAccountSelected(compare)
+    }
+    
     return (
         <AccountContext.Provider value={{
             account,
+            accountSelected,
             createAccount,
-            deleteAccount
+            deleteAccount,
+            compareAccount,
+            editAccount,
         }}>
             {children}
         </AccountContext.Provider>

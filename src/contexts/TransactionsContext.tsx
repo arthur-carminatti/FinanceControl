@@ -20,7 +20,7 @@ interface CreateTransactionInput {
 
 interface TransactionContextType {
     transactions: Transactions[]
-    fetchTransactions: (query?: string) => Promise<void>
+    // fetchTransactions: (query?: string) => Promise<void>
     createTransaction: (data: CreateTransactionInput) => Promise<void>
     deleteTransaction: (id: number) => Promise<void>
 }
@@ -34,18 +34,18 @@ export const TransactionsContext = createContext({} as TransactionContextType)
 export function TransactionsProvider({ children }: TransactionsProviderProps) {
     const [transactions, setTransactions] = useState<Transactions[]>([])
 
-    const fetchTransactions = useCallback(
-        async (query?: string) => {
-            const response = await api.get('transactions', {
-                params: {
-                    _sort: 'createdAt',
-                    _order: 'desc',
-                    q: query
-                }
-            })
+    // const fetchTransactions = useCallback(
+    //     async (query?: string) => {
+    //         const response = await api.get('transactions', {
+    //             params: {
+    //                 _sort: 'createdAt',
+    //                 _order: 'desc',
+    //                 q: query
+    //             }
+    //         })
 
-            setTransactions(response.data)
-        }, [])
+    //         setTransactions(response.data)
+    //     }, [])
 
     const createTransaction = useCallback(
         async (data: CreateTransactionInput) => {
@@ -68,14 +68,14 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
             setTransactions(transactions.filter(transaction => transaction.id !== id))
         }, [transactions])
 
-    useEffect(() => {
-        fetchTransactions()
-    }, [fetchTransactions])
+    // useEffect(() => {
+    //     fetchTransactions()
+    // }, [fetchTransactions])
 
     return (
         <TransactionsContext.Provider value={{
             transactions,
-            fetchTransactions,
+            // fetchTransactions,
             createTransaction,
             deleteTransaction,
         }}>
