@@ -1,4 +1,4 @@
-import { ReactNode, useState, createContext, useEffect } from "react";
+import { ReactNode, useState, createContext, useEffect, useCallback } from "react";
 import { api } from "../lib/axios";
 
 interface Account {
@@ -11,6 +11,9 @@ interface Account {
     price: number
     category: string
     createdAt: string
+    balance: number
+    income: number
+    outcome: number
 }
 
 interface CreateAccountInput {
@@ -30,9 +33,11 @@ interface TransactionContextType {
     account: Account[]
     accountSelected: Account[]
     createAccount: (data: CreateAccountInput) => Promise<void>
+    fetchAccounts: (query?: string) => Promise<void>
     editAccount: (data: CreateTransactionInput) => Promise<void>
     deleteAccount: (id: number) => Promise<void>
     compareAccount: (id: number) => void
+    sumAccount: (value: number) => void
 }
 
 interface AccountProviderProps {
@@ -45,15 +50,32 @@ export function AccountProvider({ children }: AccountProviderProps) {
     const [account, setAccount] = useState<Account[]>([])
     const [accountSelected, setAccountSelected] = useState<Account[]>([])
 
-    async function fetchAccounts() {
-        const response = await api.get('account')
+    // async function fetchAccounts() {
+    //     const response = await api.get('account')
 
-        setAccount(response.data)
-    }
+    //     setAccount(response.data)
+    // }
+
+    // useEffect(() => {
+    //     fetchAccounts()
+    // }, [accountSelected])
+
+    const fetchAccounts = useCallback(
+        async (query?: string) => {
+            const response = await api.get('account', {
+                params: {
+                    _sort: 'createdAt',
+                    _order: 'desc',
+                    q: query
+                }
+            })
+
+            setAccount(response.data)
+        }, [])
 
     useEffect(() => {
         fetchAccounts()
-    }, [accountSelected])
+    }, [fetchAccounts])
 
     async function createAccount(data: CreateAccountInput) {
         const { bank, agency, numberAccount } = data
@@ -66,11 +88,13 @@ export function AccountProvider({ children }: AccountProviderProps) {
             bank,
             agency,
             numberAccount,
-            balance: 0,
             description: '',
-            price: 0,
             category: '',
             type: '',
+            balance: 0,
+            price: 0,
+            income: 0,
+            outcome: 0,
             createdAt: new Date()
         })
 
@@ -111,7 +135,12 @@ export function AccountProvider({ children }: AccountProviderProps) {
         const compare = account.filter(account => account.id === id)
         setAccountSelected(compare)
     }
-    
+
+    function sumAccount(value: number) {
+        accountSelected[0].balance + value
+        console.log(accountSelected[0].balance)
+    }
+
     return (
         <AccountContext.Provider value={{
             account,
@@ -120,6 +149,8 @@ export function AccountProvider({ children }: AccountProviderProps) {
             deleteAccount,
             compareAccount,
             editAccount,
+            sumAccount,
+            fetchAccounts
         }}>
             {children}
         </AccountContext.Provider>

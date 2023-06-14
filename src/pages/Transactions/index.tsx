@@ -1,8 +1,6 @@
-import { useContextSelector } from 'use-context-selector';
 import { Summary } from "../../components/Summary";
 import { SearchForm } from "./components/SearchForm";
 import { PriceHighLight, TransactionsContainer, TransactionsTable } from "./styles";
-import { TransactionsContext } from "../../contexts/TransactionsContext";
 import { dateFormatter, priceFormatter } from "../../utils/formatter";
 import { Trash } from 'phosphor-react';
 import { ManageTransactions } from '../ManageTransactions';
@@ -10,12 +8,6 @@ import { useContext } from 'react';
 import { AccountContext } from '../../contexts/AccountContext';
 
 export function Transactions() {
-
-    const deleteTransaction = useContextSelector(TransactionsContext, (context) => {
-        return (
-            context.deleteTransaction
-        )
-    })
 
     const { accountSelected } = useContext(AccountContext)
 
@@ -32,7 +24,7 @@ export function Transactions() {
                             <tbody>
                                 {accountSelected.map(acc => {
                                     function removeTransaction() {
-                                        deleteTransaction(acc.id)
+                                        // deleteTransaction(acc.id)
                                     }
                                     return (
                                         <tr key={acc.id}>

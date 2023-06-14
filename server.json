@@ -2,28 +2,32 @@
   "transactions": [],
   "account": [
     {
-      "bank": "nuu",
-      "agency": 11121,
-      "numberAccount": 2323,
-      "balance": 0,
-      "description": "Teste",
-      "price": 111,
-      "category": "111",
-      "type": "income",
-      "createdAt": "2023-06-13T00:03:54.219Z",
-      "id": 2
-    },
-    {
       "bank": "santander",
       "agency": 1,
-      "numberAccount": 1234,
+      "numberAccount": 1,
+      "description": "",
+      "category": "",
+      "type": "",
       "balance": 0,
-      "description": "11",
-      "price": 11,
+      "price": 0,
+      "income": 0,
+      "outcome": 0,
+      "createdAt": "2023-06-13T23:38:30.921Z",
+      "id": 1
+    },
+    {
+      "bank": "nubank",
+      "agency": 2,
+      "numberAccount": 2,
+      "description": "TESTE",
       "category": "11",
       "type": "income",
-      "createdAt": "2023-06-13T23:15:03.062Z",
-      "id": 3
+      "balance": 0,
+      "price": 11,
+      "income": 0,
+      "outcome": 0,
+      "createdAt": "2023-06-13T23:38:38.169Z",
+      "id": 2
     }
   ]
 }
