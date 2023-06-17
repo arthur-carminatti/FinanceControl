@@ -3,17 +3,17 @@
     {
       "description": "Teste",
       "price": 100,
-      "category": "111",
+      "category": "aaa",
       "type": "income",
-      "createdAt": "2023-06-17T19:02:14.727Z",
+      "createdAt": "2023-06-17T19:25:07.762Z",
       "id": 1
     },
     {
-      "description": "Teste",
-      "price": 200,
+      "description": "teste",
+      "price": 20,
       "category": "aaa",
       "type": "income",
-      "createdAt": "2023-06-17T19:02:21.554Z",
+      "createdAt": "2023-06-17T19:25:12.470Z",
       "id": 2
     }
   ],
@@ -59,6 +59,20 @@
       "outcome": 0,
       "createdAt": "2023-06-17T18:39:30.116Z",
       "id": 3
+    },
+    {
+      "bank": "ppp",
+      "agency": 99,
+      "numberAccount": 2038990283,
+      "description": "",
+      "category": "",
+      "type": "",
+      "balance": 0,
+      "price": 0,
+      "income": 0,
+      "outcome": 0,
+      "createdAt": "2023-06-17T19:15:44.658Z",
+      "id": 4
     }
   ]
 }

@@ -49,25 +49,9 @@ export function AccountProvider({ children }: AccountProviderProps) {
     const [account, setAccount] = useState<Account[]>([])
     const [accountSelected, setAccountSelected] = useState<Account[]>([])
 
-    // async function fetchAccounts() {
-    //     const response = await api.get('account')
-
-    //     setAccount(response.data)
-    // }
-
-    // useEffect(() => {
-    //     fetchAccounts()
-    // }, [accountSelected])
-
     const fetchAccounts = useCallback(
-        async (query?: string) => {
-            const response = await api.get('account', {
-                params: {
-                    _sort: 'createdAt',
-                    _order: 'desc',
-                    q: query
-                }
-            })
+        async () => {
+            const response = await api.get('account')
 
             setAccount(response.data)
         }, [])
