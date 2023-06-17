@@ -6,6 +6,7 @@ import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext } from 'react';
 import { AccountContext } from '../../../contexts/AccountContext';
+import { TransactionsContext } from '../../../contexts/TransactionsContext';
 
 const newTransactionFormSchema = z.object({
     description: z.string().min(2, 'Minimo 2 caractéres').max(30, 'Máximo de 30 caractéres'),
@@ -17,7 +18,8 @@ const newTransactionFormSchema = z.object({
 type NewTransactionFormIputs = z.infer<typeof newTransactionFormSchema>
 
 export function NewTransactionModal() {
-    const { editAccount, accountSelected, sumBalanceAccount } = useContext(AccountContext)
+    const { accountSelected } = useContext(AccountContext)
+    const { createTransaction } = useContext(TransactionsContext)
 
     const isButtonDisabled = accountSelected.length === 0
 
@@ -37,18 +39,11 @@ export function NewTransactionModal() {
     async function handleCreateNewTransaction(data: NewTransactionFormIputs) {
         const { description, price, category, type } = data
 
-        await editAccount({
+        await createTransaction({
             description,
             price,
             category,
             type
-        })
-
-        await sumBalanceAccount({
-            description,
-            price,
-            category,
-            type,
         })
 
         reset()

@@ -1,14 +1,31 @@
 {
-  "transactions": [],
+  "transactions": [
+    {
+      "description": "Teste",
+      "price": 100,
+      "category": "111",
+      "type": "income",
+      "createdAt": "2023-06-17T19:02:14.727Z",
+      "id": 1
+    },
+    {
+      "description": "Teste",
+      "price": 200,
+      "category": "aaa",
+      "type": "income",
+      "createdAt": "2023-06-17T19:02:21.554Z",
+      "id": 2
+    }
+  ],
   "account": [
     {
       "bank": "santander",
       "agency": 1,
       "numberAccount": 1,
-      "description": "aaa",
-      "category": "aaaa",
+      "description": "teste",
+      "category": "aaa",
       "type": "income",
-      "balance": 0,
+      "balance": 100,
       "price": 100,
       "income": 0,
       "outcome": 0,
@@ -30,17 +47,17 @@
       "id": 2
     },
     {
-      "bank": "Testeeee",
-      "agency": 9,
-      "numberAccount": 9,
-      "description": "aaa",
-      "category": "aa",
-      "type": "income",
-      "balance": 35,
-      "price": 5,
+      "bank": "teste",
+      "agency": 1111,
+      "numberAccount": 1111,
+      "description": "",
+      "category": "",
+      "type": "",
+      "balance": 0,
+      "price": 0,
       "income": 0,
       "outcome": 0,
-      "createdAt": "2023-06-17T01:49:07.795Z",
+      "createdAt": "2023-06-17T18:39:30.116Z",
       "id": 3
     }
   ]

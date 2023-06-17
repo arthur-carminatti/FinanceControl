@@ -6,10 +6,11 @@ import { Trash } from 'phosphor-react';
 import { ManageTransactions } from '../ManageTransactions';
 import { useContext } from 'react';
 import { AccountContext } from '../../contexts/AccountContext';
+import { TransactionsContext } from "../../contexts/TransactionsContext";
 
 export function Transactions() {
-
     const { accountSelected } = useContext(AccountContext)
+    const { transactions, deleteTransaction } = useContext(TransactionsContext)
 
     return (
         <div>
@@ -22,22 +23,22 @@ export function Transactions() {
 
                         <TransactionsTable>
                             <tbody>
-                                {accountSelected.map(acc => {
+                                {transactions.map(transaction => {
                                     function removeTransaction() {
-                                        // deleteTransaction(acc.id)
+                                        deleteTransaction(transaction.id)
                                     }
                                     return (
-                                        <tr key={acc.id}>
-                                            <td>{acc.type === 'outcome' ? 'Despesa' : 'Receita'}</td>
-                                            <td>{acc.category}</td>
-                                            <td width="30%">{acc.description}</td>
+                                        <tr key={transaction.id}>
+                                            <td>{transaction.type === 'outcome' ? 'Despesa' : 'Receita'}</td>
+                                            <td>{transaction.category}</td>
+                                            <td width="30%">{transaction.description}</td>
                                             <td>
-                                                <PriceHighLight variant={acc.type}>
-                                                    {acc.type === 'outcome' && '- '}
-                                                    {priceFormatter.format(acc.price)}
+                                                <PriceHighLight variant={transaction.type}>
+                                                    {transaction.type === 'outcome' && '- '}
+                                                    {priceFormatter.format(transaction.price)}
                                                 </PriceHighLight>
                                             </td>
-                                            <td>{dateFormatter.format(new Date(acc.createdAt))}</td>
+                                            <td>{dateFormatter.format(new Date(transaction.createdAt))}</td>
                                             <td>
                                                 <button onClick={removeTransaction}>
                                                     <Trash size={18} />

@@ -32,11 +32,9 @@ interface CreateTransactionInput {
 interface TransactionContextType {
     account: Account[]
     accountSelected: Account[]
-    balanceSelected: number
     createAccount: (data: CreateAccountInput) => Promise<void>
     fetchAccounts: (query?: string) => Promise<void>
     editAccount: (data: CreateTransactionInput) => Promise<void>
-    sumBalanceAccount: (data: CreateTransactionInput) => Promise<void>
     deleteAccount: (id: number) => Promise<void>
     compareAccount: (id: number) => void
 }
@@ -50,7 +48,6 @@ export const AccountContext = createContext({} as TransactionContextType)
 export function AccountProvider({ children }: AccountProviderProps) {
     const [account, setAccount] = useState<Account[]>([])
     const [accountSelected, setAccountSelected] = useState<Account[]>([])
-    const [balanceSelected, setBalanceSelected] = useState(0)
 
     // async function fetchAccounts() {
     //     const response = await api.get('account')
@@ -128,33 +125,6 @@ export function AccountProvider({ children }: AccountProviderProps) {
         });
     }
 
-    async function sumBalanceAccount(data: CreateTransactionInput) {
-        const { price, type } = data
-
-        const idRoute = accountSelected[0].id
-
-        let balanceGet;
-
-        try {
-            const response = await api.get(`/account/${idRoute}`);
-            const account = response.data;
-            balanceGet = account.balance;
-
-            if (accountSelected.length > 0) {
-                if (type === "income") {
-                    setBalanceSelected(balanceGet += price)
-                } else {
-                    setBalanceSelected(balanceGet -= price)
-                }
-            }
-
-        } catch (error) {
-            console.error(error);
-        }
-
-        await api.patch(`account/${idRoute}`, { balance: balanceSelected })
-    }
-
     async function deleteAccount(id: number) {
         await api.delete(`account/${id}`)
         setAccount(account.filter(account => account.id !== id))
@@ -174,8 +144,6 @@ export function AccountProvider({ children }: AccountProviderProps) {
             compareAccount,
             editAccount,
             fetchAccounts,
-            sumBalanceAccount,
-            balanceSelected
         }}>
             {children}
         </AccountContext.Provider>

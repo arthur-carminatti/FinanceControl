@@ -1,8 +1,8 @@
 import { useState, useContext, useEffect } from 'react';
-import { AccountContext } from '../contexts/AccountContext';
+import { TransactionsContext } from '../contexts/TransactionsContext';
 
 export function useSummary() {
-    const { accountSelected } = useContext(AccountContext);
+    const { transactions } = useContext(TransactionsContext);
     const [summary, setSummary] = useState({
         income: 0,
         outcome: 0,
@@ -10,7 +10,7 @@ export function useSummary() {
     });
 
     useEffect(() => {
-        const newSummary = accountSelected.reduce(
+        const newSummary = transactions.reduce(
             (acc, transaction) => {
                 if (transaction.type === 'income') {
                     acc.income += transaction.price;
@@ -31,7 +31,7 @@ export function useSummary() {
 
         setSummary(newSummary);
 
-    }, [accountSelected]);
+    }, [transactions]);
 
     return summary;
 }
