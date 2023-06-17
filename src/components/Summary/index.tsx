@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { AccountContext } from "../../contexts/AccountContext";
 
 export function Summary() {
-    const { accountSelected } = useContext(AccountContext)
+    const { balanceSelected } = useContext(AccountContext)
 
     return (
         <SummaryContainer>
@@ -15,7 +15,7 @@ export function Summary() {
                     <ArrowCircleUp size={32} color="#00b37e " />
                 </header>
 
-                <strong>{priceFormatter.format(accountSelected[0].balance)}</strong>
+                <strong>{priceFormatter.format(balanceSelected)}</strong>
             </SummaryCard>
 
             <SummaryCard>
@@ -24,7 +24,7 @@ export function Summary() {
                     <ArrowCircleDown size={32} color="#f75a68 " />
                 </header>
 
-                <strong>{priceFormatter.format(accountSelected[0].balance)}</strong>
+                <strong>{priceFormatter.format(balanceSelected)}</strong>
             </SummaryCard>
 
             <SummaryCard variant="green">
@@ -33,7 +33,7 @@ export function Summary() {
                     <CurrencyDollar size={32} color="#fff " />
                 </header>
 
-                <strong>{priceFormatter.format(accountSelected[0].balance)}</strong>
+                <strong>{priceFormatter.format(balanceSelected)}</strong>
             </SummaryCard>
         </SummaryContainer>
     )

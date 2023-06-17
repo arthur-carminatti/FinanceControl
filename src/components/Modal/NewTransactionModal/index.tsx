@@ -17,7 +17,7 @@ const newTransactionFormSchema = z.object({
 type NewTransactionFormIputs = z.infer<typeof newTransactionFormSchema>
 
 export function NewTransactionModal() {
-    const { editAccount, accountSelected } = useContext(AccountContext)
+    const { editAccount, accountSelected, sumBalanceAccount } = useContext(AccountContext)
 
     const isButtonDisabled = accountSelected.length === 0
 
@@ -42,6 +42,13 @@ export function NewTransactionModal() {
             price,
             category,
             type
+        })
+
+        await sumBalanceAccount({
+            description,
+            price,
+            category,
+            type,
         })
 
         reset()
