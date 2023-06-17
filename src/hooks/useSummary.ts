@@ -30,6 +30,7 @@ export function useSummary() {
         );
 
         setSummary(newSummary);
+
     }, [accountSelected]);
 
     return summary;

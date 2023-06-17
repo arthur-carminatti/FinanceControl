@@ -37,7 +37,6 @@ interface TransactionContextType {
     editAccount: (data: CreateTransactionInput) => Promise<void>
     deleteAccount: (id: number) => Promise<void>
     compareAccount: (id: number) => void
-    sumAccount: (value: number) => void
 }
 
 interface AccountProviderProps {
@@ -136,11 +135,6 @@ export function AccountProvider({ children }: AccountProviderProps) {
         setAccountSelected(compare)
     }
 
-    function sumAccount(value: number) {
-        accountSelected[0].balance + value
-        console.log(accountSelected[0].balance)
-    }
-
     return (
         <AccountContext.Provider value={{
             account,
@@ -149,7 +143,6 @@ export function AccountProvider({ children }: AccountProviderProps) {
             deleteAccount,
             compareAccount,
             editAccount,
-            sumAccount,
             fetchAccounts
         }}>
             {children}

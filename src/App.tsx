@@ -4,6 +4,7 @@ import { GlobalStyle } from "./styles/global";
 import { BrowserRouter } from "react-router-dom";
 import { Router } from "./Router";
 import { AccountProvider } from "./contexts/AccountContext";
+import { SummaryProvider } from "./contexts/SummaryContext";
 
 export function App() {
   return (
@@ -11,7 +12,9 @@ export function App() {
       <GlobalStyle />
       <BrowserRouter>
         <AccountProvider>
-          <Router />
+          <SummaryProvider>
+            <Router />
+          </SummaryProvider>
         </AccountProvider>
       </BrowserRouter>
     </ThemeProvider>
