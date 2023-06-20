@@ -1,78 +1,74 @@
 {
   "transactions": [
     {
-      "description": "Teste",
+      "description": "teste",
       "price": 100,
-      "category": "aaa",
+      "category": "aa",
       "type": "income",
-      "createdAt": "2023-06-17T19:25:07.762Z",
+      "createdAt": "2023-06-20T23:15:50.819Z",
       "id": 1
     },
     {
-      "description": "teste",
+      "description": "20",
       "price": 20,
+      "category": "aa",
+      "type": "income",
+      "createdAt": "2023-06-20T23:16:01.045Z",
+      "id": 2
+    },
+    {
+      "description": "Teste",
+      "price": 5,
       "category": "aaa",
       "type": "income",
-      "createdAt": "2023-06-17T19:25:12.470Z",
-      "id": 2
+      "createdAt": "2023-06-20T23:18:59.450Z",
+      "id": 3
+    },
+    {
+      "description": "aaa",
+      "price": 5,
+      "category": "55",
+      "type": "income",
+      "createdAt": "2023-06-20T23:19:18.628Z",
+      "id": 4
+    },
+    {
+      "description": "tt",
+      "price": 100,
+      "category": "aaa",
+      "type": "income",
+      "createdAt": "2023-06-20T23:20:20.427Z",
+      "id": 5
     }
   ],
   "account": [
     {
-      "bank": "santander",
+      "bank": "Nu",
       "agency": 1,
       "numberAccount": 1,
-      "description": "teste",
-      "category": "aaa",
-      "type": "income",
-      "balance": 100,
-      "price": 100,
+      "description": "",
+      "category": "",
+      "type": "",
+      "balance": 230,
+      "price": 0,
       "income": 0,
       "outcome": 0,
-      "createdAt": "2023-06-13T23:38:30.921Z",
+      "createdAt": "2023-06-20T22:41:36.778Z",
       "id": 1
     },
     {
-      "bank": "nubank",
+      "bank": "Bradesco",
       "agency": 2,
       "numberAccount": 2,
-      "description": "aaa",
-      "category": "111",
-      "type": "income",
-      "balance": 1,
-      "price": 1,
+      "description": "",
+      "category": "",
+      "type": "",
+      "balance": 230,
+      "price": 0,
       "income": 0,
       "outcome": 0,
-      "createdAt": "2023-06-13T23:38:38.169Z",
+      "createdAt": "2023-06-20T22:41:46.746Z",
       "id": 2
-    },
-    {
-      "bank": "teste",
-      "agency": 1111,
-      "numberAccount": 1111,
-      "description": "",
-      "category": "",
-      "type": "",
-      "balance": 0,
-      "price": 0,
-      "income": 0,
-      "outcome": 0,
-      "createdAt": "2023-06-17T18:39:30.116Z",
-      "id": 3
-    },
-    {
-      "bank": "ppp",
-      "agency": 99,
-      "numberAccount": 2038990283,
-      "description": "",
-      "category": "",
-      "type": "",
-      "balance": 0,
-      "price": 0,
-      "income": 0,
-      "outcome": 0,
-      "createdAt": "2023-06-17T19:15:44.658Z",
-      "id": 4
     }
   ]
 }

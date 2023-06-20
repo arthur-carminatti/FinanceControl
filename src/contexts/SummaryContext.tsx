@@ -24,10 +24,6 @@ export function SummaryProvider({ children }: SummaryProviderProps) {
         balance: 0
     });
 
-    async function updateBalance(accountId: number, newBalance: number) {
-        await api.patch(`account/${accountId}`, { balance: newBalance })
-    }
-
     useEffect(() => {
         const newSummary = accountSelected.reduce(
             (acc, transaction) => {
@@ -49,10 +45,6 @@ export function SummaryProvider({ children }: SummaryProviderProps) {
         );
 
         setSummary(newSummary);
-
-        if (accountSelected && accountSelected.length > 0) {
-            updateBalance(accountSelected[0].id, newSummary.balance);
-        }
 
     }, [accountSelected]);
 

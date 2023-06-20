@@ -32,6 +32,11 @@ export const TransactionsContext = createContext({} as TransactionContextType)
 
 export function TransactionsProvider({ children }: TransactionsProviderProps) {
     const [transactions, setTransactions] = useState<Transactions[]>([])
+    const [summary, setSummary] = useState({
+        income: 0,
+        outcome: 0,
+        balance: 0
+    });
 
     const fetchTransactions = useCallback(
         async (query?: string) => {
@@ -60,6 +65,26 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
 
             setTransactions(state => [response.data, ...state])
         }, [])
+
+    const transformTransaction = useCallback(
+        async () => {
+            const newSummary = transactions.reduce((acc, transaction) => {
+                if (transaction.type === 'income') {
+                    acc.income += transaction.price;
+                    acc.balance += transaction.price;
+                } else {
+                    acc.outcome += transaction.price;
+                    acc.balance -= transaction.price;
+                }
+                return acc;
+            }, {
+                income: 0,
+                outcome: 0,
+                balance: 0
+            });
+
+            setSummary(newSummary);
+        }, [transactions])
 
     const deleteTransaction = useCallback(
         async (id: number) => {
