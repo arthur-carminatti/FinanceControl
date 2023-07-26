@@ -1,44 +1,12 @@
 {
   "transactions": [
     {
-      "description": "teste",
-      "price": 100,
+      "description": "234234",
+      "price": 1111,
       "category": "aa",
       "type": "income",
-      "createdAt": "2023-06-20T23:15:50.819Z",
+      "createdAt": "2023-06-21T16:15:12.373Z",
       "id": 1
-    },
-    {
-      "description": "20",
-      "price": 20,
-      "category": "aa",
-      "type": "income",
-      "createdAt": "2023-06-20T23:16:01.045Z",
-      "id": 2
-    },
-    {
-      "description": "Teste",
-      "price": 5,
-      "category": "aaa",
-      "type": "income",
-      "createdAt": "2023-06-20T23:18:59.450Z",
-      "id": 3
-    },
-    {
-      "description": "aaa",
-      "price": 5,
-      "category": "55",
-      "type": "income",
-      "createdAt": "2023-06-20T23:19:18.628Z",
-      "id": 4
-    },
-    {
-      "description": "tt",
-      "price": 100,
-      "category": "aaa",
-      "type": "income",
-      "createdAt": "2023-06-20T23:20:20.427Z",
-      "id": 5
     }
   ],
   "account": [
@@ -49,7 +17,7 @@
       "description": "",
       "category": "",
       "type": "",
-      "balance": 230,
+      "balance": 1111,
       "price": 0,
       "income": 0,
       "outcome": 0,
@@ -63,7 +31,7 @@
       "description": "",
       "category": "",
       "type": "",
-      "balance": 230,
+      "balance": 1111,
       "price": 0,
       "income": 0,
       "outcome": 0,

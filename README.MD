@@ -1,6 +1,6 @@
 # Finance Control
 
-![Finance Control Logo](/path/to/logo.png)
+![Finance Control Logo](/src/assets/FinanceControl.png)
 
 ## Descrição
 
