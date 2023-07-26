@@ -4,7 +4,7 @@
 
 ## Descrição
 
-O projeto Finance Control é um aplicativo de gerenciamento de contas desenvolvido com ReactJS e Typescript, utilizando o Vite como bundler. Ele permite criar, remover e mesclar contas, além de realizar transações e exibir um resumo das transações de todas as contas no painel de Dashboard.
+O projeto Finance Control é um projeto pessoal desenvolvido por mim e que ainda está em faze de desenvolvimento. Um aplicativo de gerenciamento de contas desenvolvido com ReactJS e Typescript, utilizando o Vite como bundler. Ele permite criar, remover e mesclar contas, além de realizar transações e exibir um resumo das transações de todas as contas no painel de Dashboard.
 
 ## Pré-requisitos
 
@@ -42,7 +42,7 @@ Para executar o projeto, siga as etapas abaixo:
 
 A estrutura do projeto é organizada da seguinte forma:
 
-.
+`
 ├── public/ # Arquivos públicos
 ├── src/ # Código-fonte do projeto
 │ ├── components/ # Componentes reutilizáveis
@@ -55,6 +55,7 @@ A estrutura do projeto é organizada da seguinte forma:
 ├── .gitignore # Arquivos a serem ignorados pelo Git
 ├── package.json # Dependências do projeto e scripts
 └── README.md # Documentação do projeto
+`
 
 O projeto Finance Control oferece as seguintes funcionalidades:
 
